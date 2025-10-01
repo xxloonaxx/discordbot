@@ -8,6 +8,8 @@ Dieser Bot bietet umfangreiche Moderationsfunktionen, VRChat-Gruppenverwaltung s
 - **Moderation**: Kick, Ban, Timeout, Slowmode, Warnungen, Purge, Lockdown und Erinnerungen.
 - **VRChat-Integration**: Anbindung an die VRChat-API zur Anzeige und Verwaltung von Gruppen, inklusive Promotion-, Demotion- und Invite-Funktionen.
 - **Musik**: Verbindung zu einem Lavalink-Knoten via Wavelink mit Befehlen wie Play, Pause, Resume, Stop, Skip und Leave.
+- **Reaktionen & Spaß**: Slash-Commands wie `/pat`, `/hug` oder `/slap`, die passende Bilder von nekos.best senden.
+- **NSFW**: Slash-Command `/nsfw` mit verschiedenen Kategorien, der nur in entsprechend markierten Kanälen verfügbar ist.
 
 ## Setup
 
