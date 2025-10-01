@@ -4,5 +4,7 @@ __all__ = [
     "general",
     "moderation",
     "music",
+    "nsfw",
+    "reactions",
     "vrchat",
 ]

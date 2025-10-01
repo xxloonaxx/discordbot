@@ -10,7 +10,7 @@ import discord
 from discord.ext import commands
 
 from . import config
-from .cogs import general, moderation, music, vrchat
+from .cogs import general, moderation, music, nsfw, reactions, vrchat
 
 _log = logging.getLogger(__name__)
 
@@ -33,6 +33,17 @@ def create_bot(bot_config: config.BotConfig | None = None) -> commands.Bot:
 
     _configure_logging()
     _load_cogs(bot, bot_config)
+
+    @bot.event
+    async def setup_hook() -> None:  # type: ignore[override]
+        """Synchronise the slash command tree when the bot connects."""
+
+        if bot_config.discord.guild_ids:
+            for guild_id in bot_config.discord.guild_ids:
+                guild = discord.Object(id=guild_id)
+                await bot.tree.sync(guild=guild)
+        else:
+            await bot.tree.sync()
 
     @bot.event
     async def on_ready() -> None:  # type: ignore[override]
@@ -63,6 +74,8 @@ def _load_cogs(bot: commands.Bot, bot_config: config.BotConfig) -> None:
         ("Moderation", moderation.ModerationCog()),
         ("Music", music.MusicCog(bot_config.lavalink)),
         ("VRChat", vrchat.VRChatCog(bot_config.vrchat)),
+        ("Reactions", reactions.ReactionCog(bot)),
+        ("NSFW", nsfw.NSFWCog(bot)),
     )
     for name, cog in cog_factories:
         bot.add_cog(cog)

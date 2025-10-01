@@ -1,5 +1,5 @@
 """Utility subpackage for the Discord bot."""
 
-from . import embeds
+from . import embeds, http
 
-__all__ = ["embeds"]
+__all__ = ["embeds", "http"]
